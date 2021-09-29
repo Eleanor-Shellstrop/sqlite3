@@ -11,7 +11,10 @@ connection = sqlite3.connect('inventory.db')
 c = connection.cursor()
 
 
-# Create a table
+
+# UNCOMMENT 1st
+#___________________________________________________
+
 # c.execute("""CREATE TABLE yarns(
 #     brand_name text, 
 #     collection_name text,
@@ -34,7 +37,14 @@ c = connection.cursor()
 #     )
 # """)
 
-# Insert info into table
+#___________________________________________________
+# COMMENT OUT 1st SECTION BEFORE STARTING NEXT
+
+
+
+# UNCOMMENT 2ND
+#___________________________________________________
+
 # c.execute("""INSERT INTO yarns VALUES (
 #     'Lion Brand',
 #     'Wool Ease',
@@ -56,6 +66,14 @@ c = connection.cursor()
 #     'Washine wash cold or warm, tumble dry, do not iron, do not use bleach, dry clean any'
 # )""")
 
+#___________________________________________________
+# COMMENT OUT 2nd SECTION BEFORE STARTING NEXT
+
+
+
+# UNCOMMENT 3rd
+#___________________________________________________
+
 # cursor = c.execute("SELECT * FROM yarns")
 # print(c.fetchall())
 
@@ -63,14 +81,24 @@ c = connection.cursor()
 # for row in colnames:
 #     print(row[0])
 
+#___________________________________________________
+# COMMENT OUT 3rd SECTION BEFORE STARTING NEXT
 
-#Import csv with pandas
-new_yarn = pd.read_csv('yarn_data.csv')
-new_yarn.to_sql('yarns', connection, if_exists='append', index=False)
+
+
+# UNCOMMENT 4th
+#___________________________________________________
+
+# new_yarn = pd.read_csv('yarn_data.csv')
+# new_yarn.to_sql('yarns', connection, if_exists='append', index=False)
 
 
 # Test results
-print(c.execute('''SELECT * FROM yarns''').fetchall())
+# print(c.execute('''SELECT * FROM yarns''').fetchall())
+
+#___________________________________________________
+
+
 
 connection.commit()
 
