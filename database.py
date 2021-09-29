@@ -1,3 +1,5 @@
+import csv
+import pandas as pd
 import sqlite3
 
 
@@ -54,12 +56,21 @@ c = connection.cursor()
 #     'Washine wash cold or warm, tumble dry, do not iron, do not use bleach, dry clean any'
 # )""")
 
-cursor = c.execute("SELECT * FROM yarns")
-print(c.fetchall())
+# cursor = c.execute("SELECT * FROM yarns")
+# print(c.fetchall())
 
-colnames = cursor.description
-for row in colnames:
-    print(row[0])
+# colnames = cursor.description
+# for row in colnames:
+#     print(row[0])
+
+
+#Import csv with pandas
+new_yarn = pd.read_csv('yarn_data.csv')
+new_yarn.to_sql('yarns', connection, if_exists='append', index=False)
+
+
+# Test results
+print(c.execute('''SELECT * FROM yarns''').fetchall())
 
 connection.commit()
 
